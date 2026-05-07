@@ -1,0 +1,532 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0260B755DAD390E89B0AA120 /* AppIcon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 47300FA43844E1BEF12585A1 /* AppIcon.iconset */; };
+		11E7D52912338560136C13DC /* LeadListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED39C9E48E3A053A54A2CBA /* LeadListView.swift */; };
+		12CBF53569ED28F0EDA102C7 /* CampaignViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F02B8E78BDD3E22D23F9A /* CampaignViews.swift */; };
+		13F85B0117A0428D86A13244 /* InvoiceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F85B0017A0428D86A13244 /* InvoiceViews.swift */; };
+		13F85B0317A0428D86A13244 /* CommunicationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F85B0217A0428D86A13244 /* CommunicationViews.swift */; };
+		13F85B0517A0428D86A13244 /* MailAppClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F85B0417A0428D86A13244 /* MailAppClient.swift */; };
+		179D05B1465EAB417E04B5E1 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32D14825EE80A5DDACA3C7 /* AnalyticsView.swift */; };
+		1E256D38780B35F2EB56C997 /* ActivityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607B5D9318F9186AC79B5D31 /* ActivityViews.swift */; };
+		2852FD2CBBA46B2ABEBCD384 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6324D081A1311CC34E8A016 /* DashboardView.swift */; };
+		2A1F34A597E6E511C4CFECC7 /* WorkflowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A347F38A22143EEDFA7A52F8 /* WorkflowViews.swift */; };
+		31600FBBFC637189254C8880 /* TicketViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF11DE350CAFFEE49DC35CD /* TicketViews.swift */; };
+		466B861E44E07A9E1E3A51C4 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007CF4CD10CB52BA15C05A3 /* ContactListView.swift */; };
+		4A7C83098C396C66888F4AA6 /* TalentoSostenible.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A05B3CA5EC821D0660C3DF2D /* TalentoSostenible.xcdatamodeld */; };
+		4E5BB9F8595AA521049C9A7B /* TalentoSostenibleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C8388770B8F13FA699643 /* TalentoSostenibleApp.swift */; };
+		5A47A50170B50C6628D6ED3C /* OpportunityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2192B1257B79651BA25E84 /* OpportunityViews.swift */; };
+		5DFD69E9FA73EB5634AAE10B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA389881F445E2EBBBAC677 /* Assets.xcassets */; };
+		63649A9AC930FB79BCB7A985 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127CC0F223476C9D01CE4FD /* PersistenceController.swift */; };
+		8E86A812AA732F24C9D439B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDEF36B3FD4E56113F65881 /* ContentView.swift */; };
+		A9DEC894441FF73B7F978014 /* CRMIntelligence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5942E0E7FEAE95805DC050B0 /* CRMIntelligence.swift */; };
+		AF23AA8CF3ECFC6D41504600 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D609F6DAA6C833332A5391A /* NotificationManager.swift */; };
+		EA269AEA5C75FC010D90770A /* CompanyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539B81AE0B1A2567E0DA2F9C /* CompanyListView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1127CC0F223476C9D01CE4FD /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		13F85B0017A0428D86A13244 /* InvoiceViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViews.swift; sourceTree = "<group>"; };
+		13F85B0217A0428D86A13244 /* CommunicationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViews.swift; sourceTree = "<group>"; };
+		13F85B0417A0428D86A13244 /* MailAppClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailAppClient.swift; sourceTree = "<group>"; };
+		1BF11DE350CAFFEE49DC35CD /* TicketViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViews.swift; sourceTree = "<group>"; };
+		1C2192B1257B79651BA25E84 /* OpportunityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityViews.swift; sourceTree = "<group>"; };
+		336E945E5B3B5CD412E4F668 /* TalentoSostenible.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TalentoSostenible.entitlements; sourceTree = "<group>"; };
+		47300FA43844E1BEF12585A1 /* AppIcon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = AppIcon.iconset; sourceTree = "<group>"; };
+		539B81AE0B1A2567E0DA2F9C /* CompanyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListView.swift; sourceTree = "<group>"; };
+		590B4E78B93EFDB0AAB42202 /* TalentoSostenible.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TalentoSostenible.xcdatamodel; sourceTree = "<group>"; };
+		5942E0E7FEAE95805DC050B0 /* CRMIntelligence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRMIntelligence.swift; sourceTree = "<group>"; };
+		607B5D9318F9186AC79B5D31 /* ActivityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViews.swift; sourceTree = "<group>"; };
+		6CDEF36B3FD4E56113F65881 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7D609F6DAA6C833332A5391A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		A347F38A22143EEDFA7A52F8 /* WorkflowViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowViews.swift; sourceTree = "<group>"; };
+		A6324D081A1311CC34E8A016 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		AEA389881F445E2EBBBAC677 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B007CF4CD10CB52BA15C05A3 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
+		CE32D14825EE80A5DDACA3C7 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		F73C8388770B8F13FA699643 /* TalentoSostenibleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalentoSostenibleApp.swift; sourceTree = "<group>"; };
+		F75733F4676D0E86F6DE75B6 /* Talento Sostenible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Talento Sostenible.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7F02B8E78BDD3E22D23F9A /* CampaignViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignViews.swift; sourceTree = "<group>"; };
+		FED39C9E48E3A053A54A2CBA /* LeadListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		06D649325D4C30D899957F61 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5942E0E7FEAE95805DC050B0 /* CRMIntelligence.swift */,
+				13F85B0417A0428D86A13244 /* MailAppClient.swift */,
+				7D609F6DAA6C833332A5391A /* NotificationManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1310BBBC66A2E91B10A90CE2 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				CE32D14825EE80A5DDACA3C7 /* AnalyticsView.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		13F85B0617A0428D86A13244 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				13F85B0217A0428D86A13244 /* CommunicationViews.swift */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
+		1E2C71ECAB508FCADF671111 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				539B81AE0B1A2567E0DA2F9C /* CompanyListView.swift */,
+				B007CF4CD10CB52BA15C05A3 /* ContactListView.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		3DEE8F286743436B5165A030 /* TalentoSostenible */ = {
+			isa = PBXGroup;
+			children = (
+				47300FA43844E1BEF12585A1 /* AppIcon.iconset */,
+				AEA389881F445E2EBBBAC677 /* Assets.xcassets */,
+				6CDEF36B3FD4E56113F65881 /* ContentView.swift */,
+				336E945E5B3B5CD412E4F668 /* TalentoSostenible.entitlements */,
+				F73C8388770B8F13FA699643 /* TalentoSostenibleApp.swift */,
+				87EB7313AF71F57D765CDBE4 /* Models */,
+				06D649325D4C30D899957F61 /* Services */,
+				CAC0220EAB2F24BF94D530EE /* Views */,
+			);
+			path = TalentoSostenible;
+			sourceTree = "<group>";
+		};
+		4D9D5B70B23495404275C40F /* Automation */ = {
+			isa = PBXGroup;
+			children = (
+				A347F38A22143EEDFA7A52F8 /* WorkflowViews.swift */,
+			);
+			path = Automation;
+			sourceTree = "<group>";
+		};
+		6B8BDEB2E1F981AB81206C90 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				607B5D9318F9186AC79B5D31 /* ActivityViews.swift */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		7BAF103426812B656D998717 = {
+			isa = PBXGroup;
+			children = (
+				3DEE8F286743436B5165A030 /* TalentoSostenible */,
+				FA0A923C49D13D9037900561 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87EB7313AF71F57D765CDBE4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1127CC0F223476C9D01CE4FD /* PersistenceController.swift */,
+				A05B3CA5EC821D0660C3DF2D /* TalentoSostenible.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF39660C4CE61C25644EA6D9 /* Leads */ = {
+			isa = PBXGroup;
+			children = (
+				FED39C9E48E3A053A54A2CBA /* LeadListView.swift */,
+			);
+			path = Leads;
+			sourceTree = "<group>";
+		};
+		BAB352EFE617257BA4988CAC /* Opportunities */ = {
+			isa = PBXGroup;
+			children = (
+				1C2192B1257B79651BA25E84 /* OpportunityViews.swift */,
+			);
+			path = Opportunities;
+			sourceTree = "<group>";
+		};
+		CAC0220EAB2F24BF94D530EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B8BDEB2E1F981AB81206C90 /* Activities */,
+				1310BBBC66A2E91B10A90CE2 /* Analytics */,
+				4D9D5B70B23495404275C40F /* Automation */,
+				DB2D32A5E81D9A15480F2DF5 /* Campaigns */,
+				13F85B0617A0428D86A13244 /* Communication */,
+				1E2C71ECAB508FCADF671111 /* Contacts */,
+				F6706C7E15FFB6CAD5B66E07 /* Dashboard */,
+				13F85B0017A0428D86A13244 /* InvoiceViews.swift */,
+				AF39660C4CE61C25644EA6D9 /* Leads */,
+				BAB352EFE617257BA4988CAC /* Opportunities */,
+				E79F69C9C9AC477C96194A94 /* Tickets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DB2D32A5E81D9A15480F2DF5 /* Campaigns */ = {
+			isa = PBXGroup;
+			children = (
+				FA7F02B8E78BDD3E22D23F9A /* CampaignViews.swift */,
+			);
+			path = Campaigns;
+			sourceTree = "<group>";
+		};
+		E79F69C9C9AC477C96194A94 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				1BF11DE350CAFFEE49DC35CD /* TicketViews.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		F6706C7E15FFB6CAD5B66E07 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				A6324D081A1311CC34E8A016 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		FA0A923C49D13D9037900561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F75733F4676D0E86F6DE75B6 /* Talento Sostenible.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43A339ABCC85CFD668EBF546 /* TalentoSostenible */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A15496C27A429E4FD23E248D /* Build configuration list for PBXNativeTarget "TalentoSostenible" */;
+			buildPhases = (
+				26D9AF1EC8812D3ECC30E166 /* Sources */,
+				B479DA1BD6EDD5639C35339C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TalentoSostenible;
+			packageProductDependencies = (
+			);
+			productName = TalentoSostenible;
+			productReference = F75733F4676D0E86F6DE75B6 /* Talento Sostenible.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA5EC0051BBCB70B4EA8EE2E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2640;
+			};
+			buildConfigurationList = F933867869B1F7E37213CF72 /* Build configuration list for PBXProject "TalentoSostenible" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7BAF103426812B656D998717;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FA0A923C49D13D9037900561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43A339ABCC85CFD668EBF546 /* TalentoSostenible */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B479DA1BD6EDD5639C35339C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0260B755DAD390E89B0AA120 /* AppIcon.iconset in Resources */,
+				5DFD69E9FA73EB5634AAE10B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26D9AF1EC8812D3ECC30E166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E256D38780B35F2EB56C997 /* ActivityViews.swift in Sources */,
+				13F85B0117A0428D86A13244 /* InvoiceViews.swift in Sources */,
+				13F85B0317A0428D86A13244 /* CommunicationViews.swift in Sources */,
+				13F85B0517A0428D86A13244 /* MailAppClient.swift in Sources */,
+				179D05B1465EAB417E04B5E1 /* AnalyticsView.swift in Sources */,
+				A9DEC894441FF73B7F978014 /* CRMIntelligence.swift in Sources */,
+				12CBF53569ED28F0EDA102C7 /* CampaignViews.swift in Sources */,
+				EA269AEA5C75FC010D90770A /* CompanyListView.swift in Sources */,
+				466B861E44E07A9E1E3A51C4 /* ContactListView.swift in Sources */,
+				8E86A812AA732F24C9D439B2 /* ContentView.swift in Sources */,
+				2852FD2CBBA46B2ABEBCD384 /* DashboardView.swift in Sources */,
+				11E7D52912338560136C13DC /* LeadListView.swift in Sources */,
+				AF23AA8CF3ECFC6D41504600 /* NotificationManager.swift in Sources */,
+				5A47A50170B50C6628D6ED3C /* OpportunityViews.swift in Sources */,
+				63649A9AC930FB79BCB7A985 /* PersistenceController.swift in Sources */,
+				4A7C83098C396C66888F4AA6 /* TalentoSostenible.xcdatamodeld in Sources */,
+				4E5BB9F8595AA521049C9A7B /* TalentoSostenibleApp.swift in Sources */,
+				31600FBBFC637189254C8880 /* TicketViews.swift in Sources */,
+				2A1F34A597E6E511C4CFECC7 /* WorkflowViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6EEE6578046D27F6F6DA348D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = L6VB5SQMZU;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		750204F51ABFBB31949113D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L6VB5SQMZU;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		9FDA667B475E60BF22CD55F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = TalentoSostenible/TalentoSostenible.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 94W2G382DX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Talento Sostenible";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Talento Sostenible necesita acceso a Mail para leer y responder correos corporativos desde la app.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Talento Sostenible necesita acceso al calendario para mostrar y crear eventos.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Talento Sostenible necesita acceso a recordatorios para seguimiento de tareas.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talentosostenible.talentosostenibleapp;
+				PRODUCT_NAME = "Talento Sostenible";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		F000D66A33E4E298F39E1B21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = TalentoSostenible/TalentoSostenible.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 94W2G382DX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Talento Sostenible";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Talento Sostenible necesita acceso a Mail para leer y responder correos corporativos desde la app.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Talento Sostenible necesita acceso al calendario para mostrar y crear eventos.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Talento Sostenible necesita acceso a recordatorios para seguimiento de tareas.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talentosostenible.talentosostenibleapp;
+				PRODUCT_NAME = "Talento Sostenible";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A15496C27A429E4FD23E248D /* Build configuration list for PBXNativeTarget "TalentoSostenible" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F000D66A33E4E298F39E1B21 /* Debug */,
+				9FDA667B475E60BF22CD55F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F933867869B1F7E37213CF72 /* Build configuration list for PBXProject "TalentoSostenible" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EEE6578046D27F6F6DA348D /* Debug */,
+				750204F51ABFBB31949113D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A05B3CA5EC821D0660C3DF2D /* TalentoSostenible.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				590B4E78B93EFDB0AAB42202 /* TalentoSostenible.xcdatamodel */,
+			);
+			currentVersion = 590B4E78B93EFDB0AAB42202 /* TalentoSostenible.xcdatamodel */;
+			path = TalentoSostenible.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FA5EC0051BBCB70B4EA8EE2E /* Project object */;
+}

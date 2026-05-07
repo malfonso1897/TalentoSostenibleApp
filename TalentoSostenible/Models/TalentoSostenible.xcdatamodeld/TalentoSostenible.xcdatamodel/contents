@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="NO">
+    <entity name="CDCompany" representedClassName="CDCompany" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="taxId" optional="YES" attributeType="String"/>
+        <attribute name="industry" optional="YES" attributeType="String"/>
+        <attribute name="website" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="postalCode" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="province" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="employeeCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="annualRevenue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDContact" inverseName="company" inverseEntity="CDContact"/>
+        <relationship name="opportunities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDOpportunity" inverseName="company" inverseEntity="CDOpportunity"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDActivity" inverseName="company" inverseEntity="CDActivity"/>
+                <relationship name="invoices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDInvoice" inverseName="company" inverseEntity="CDInvoice"/>
+    </entity>
+    <entity name="CDContact" representedClassName="CDContact" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="firstName" attributeType="String" defaultValueString=""/>
+        <attribute name="lastName" attributeType="String" defaultValueString=""/>
+                <attribute name="taxId" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="mobile" optional="YES" attributeType="String"/>
+        <attribute name="jobTitle" optional="YES" attributeType="String"/>
+                <attribute name="postalCode" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+                <attribute name="province" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="status" attributeType="String" defaultValueString="active"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" inverseName="contacts" inverseEntity="CDCompany"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDActivity" inverseName="contact" inverseEntity="CDActivity"/>
+        <relationship name="opportunities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDOpportunity" inverseName="contact" inverseEntity="CDOpportunity"/>
+        <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTicket" inverseName="contact" inverseEntity="CDTicket"/>
+        <relationship name="campaignMemberships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDCampaignMember" inverseName="contact" inverseEntity="CDCampaignMember"/>
+        <relationship name="invoices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDInvoice" inverseName="contact" inverseEntity="CDInvoice"/>
+    </entity>
+    <entity name="CDLead" representedClassName="CDLead" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="firstName" attributeType="String" defaultValueString=""/>
+        <attribute name="lastName" attributeType="String" defaultValueString=""/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="companyName" optional="YES" attributeType="String"/>
+        <attribute name="jobTitle" optional="YES" attributeType="String"/>
+        <attribute name="source" attributeType="String" defaultValueString="web"/>
+        <attribute name="status" attributeType="String" defaultValueString="new"/>
+        <attribute name="score" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="isConverted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="CDOpportunity" representedClassName="CDOpportunity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="probability" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stage" attributeType="String" defaultValueString="prospecting"/>
+        <attribute name="expectedCloseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" inverseName="opportunities" inverseEntity="CDCompany"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDContact" inverseName="opportunities" inverseEntity="CDContact"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDActivity" inverseName="opportunity" inverseEntity="CDActivity"/>
+    </entity>
+    <entity name="CDActivity" representedClassName="CDActivity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="subject" attributeType="String" defaultValueString=""/>
+        <attribute name="activityType" attributeType="String" defaultValueString="task"/>
+        <attribute name="assignee" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="priority" attributeType="String" defaultValueString="medium"/>
+        <attribute name="workflowStatus" attributeType="String" defaultValueString="todo"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDContact" inverseName="activities" inverseEntity="CDContact"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" inverseName="activities" inverseEntity="CDCompany"/>
+        <relationship name="opportunity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDOpportunity" inverseName="activities" inverseEntity="CDOpportunity"/>
+    </entity>
+    <entity name="CDCampaign" representedClassName="CDCampaign" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="campaignType" attributeType="String" defaultValueString="email"/>
+        <attribute name="status" attributeType="String" defaultValueString="draft"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="budget" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDCampaignMember" inverseName="campaign" inverseEntity="CDCampaignMember"/>
+    </entity>
+    <entity name="CDCampaignMember" representedClassName="CDCampaignMember" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sent" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="opened" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="clicked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="converted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="campaign" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCampaign" inverseName="members" inverseEntity="CDCampaign"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDContact" inverseName="campaignMemberships" inverseEntity="CDContact"/>
+    </entity>
+    <entity name="CDTicket" representedClassName="CDTicket" syncable="YES" codeGenerationType="class">
+        <attribute name="assignee" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="number" attributeType="String" defaultValueString=""/>
+        <attribute name="slaDeadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="subject" attributeType="String" defaultValueString=""/>
+        <attribute name="ticketDescription" optional="YES" attributeType="String"/>
+        <attribute name="priority" attributeType="String" defaultValueString="medium"/>
+        <attribute name="status" attributeType="String" defaultValueString="open"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDContact" inverseName="tickets" inverseEntity="CDContact"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDTicketComment" inverseName="ticket" inverseEntity="CDTicketComment"/>
+    </entity>
+    <entity name="CDTicketComment" representedClassName="CDTicketComment" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="content" attributeType="String" defaultValueString=""/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTicket" inverseName="comments" inverseEntity="CDTicket"/>
+    </entity>
+    <entity name="CDWorkflow" representedClassName="CDWorkflow" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="triggerType" attributeType="String" defaultValueString="manual"/>
+        <attribute name="actionType" attributeType="String" defaultValueString="notification"/>
+        <attribute name="isActive" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="executionCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastExecuted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="CDInvoice" representedClassName="CDInvoice" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="number" attributeType="String" defaultValueString=""/>
+        <attribute name="issueDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" attributeType="String" defaultValueString="draft"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="subtotal" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="taxAmount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="total" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="issuerName" optional="YES" attributeType="String"/>
+        <attribute name="issuerTaxId" optional="YES" attributeType="String"/>
+        <attribute name="issuerAddress" optional="YES" attributeType="String"/>
+        <attribute name="issuerPostalCode" optional="YES" attributeType="String"/>
+        <attribute name="issuerCity" optional="YES" attributeType="String"/>
+        <attribute name="issuerProvince" optional="YES" attributeType="String"/>
+        <attribute name="issuerCountry" optional="YES" attributeType="String"/>
+        <attribute name="issuerEmail" optional="YES" attributeType="String"/>
+        <attribute name="issuerPhone" optional="YES" attributeType="String"/>
+        <attribute name="issuerIban" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" inverseName="invoices" inverseEntity="CDCompany"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDContact" inverseName="invoices" inverseEntity="CDContact"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDInvoiceItem" inverseName="invoice" inverseEntity="CDInvoiceItem"/>
+    </entity>
+    <entity name="CDInvoiceItem" representedClassName="CDInvoiceItem" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="position" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="concept" attributeType="String" defaultValueString=""/>
+        <attribute name="quantity" attributeType="Double" defaultValueString="1.0" usesScalarValueType="YES"/>
+        <attribute name="unitPrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="taxRate" attributeType="Double" defaultValueString="21.0" usesScalarValueType="YES"/>
+        <attribute name="lineTotal" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="invoice" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDInvoice" inverseName="items" inverseEntity="CDInvoice"/>
+    </entity>
+    <entity name="CDExpense" representedClassName="CDExpense" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="concept" attributeType="String" defaultValueString=""/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="supplier" optional="YES" attributeType="String"/>
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="expenseDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="paymentMethod" attributeType="String" defaultValueString="transfer"/>
+        <attribute name="isDeductible" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+</model>

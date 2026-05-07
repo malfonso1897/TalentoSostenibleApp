@@ -1,0 +1,34 @@
+name: TalentoSostenible
+options:
+  bundleIdPrefix: com.talentosostenible
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+targets:
+  TalentoSostenible:
+    type: application
+    platform: macOS
+    sources:
+      - TalentoSostenible
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.talentosostenible.crm
+        PRODUCT_NAME: Talento Sostenible
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        GENERATE_INFOPLIST_FILE: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.business"
+        INFOPLIST_KEY_CFBundleDisplayName: "Talento Sostenible"
+        INFOPLIST_KEY_NSCalendarsUsageDescription: "Talento Sostenible necesita acceso al calendario para mostrar y crear eventos."
+        INFOPLIST_KEY_NSRemindersUsageDescription: "Talento Sostenible necesita acceso a recordatorios para seguimiento de tareas."
+    entitlements:
+      path: TalentoSostenible/TalentoSostenible.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.personal-information.calendars: true
