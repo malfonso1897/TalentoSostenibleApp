@@ -83,6 +83,7 @@ struct InvoicePreviewData {
     let dueDate: Date?
     let status: String
     let notes: String
+    let withholdingRate: Double
     let issuer: InvoiceIssuerProfile
     let client: ClientData
     let items: [InvoiceItemDraft]
@@ -95,8 +96,12 @@ struct InvoicePreviewData {
         items.reduce(0) { $0 + $1.taxAmount }
     }
 
+    var withholdingAmount: Double {
+        subtotal * withholdingRate / 100
+    }
+
     var total: Double {
-        subtotal + taxAmount
+        subtotal + taxAmount - withholdingAmount
     }
 }
 
@@ -636,6 +641,7 @@ struct InvoiceFormView: View {
     @State private var showPreview = true
     @State private var exportError = ""
     @State private var showingExportError = false
+    @AppStorage("invoice.withholdingRate") private var withholdingRate = 15.0
 
     let statusOptions = ["draft", "issued", "paid", "overdue", "cancelled"]
 
@@ -646,6 +652,7 @@ struct InvoiceFormView: View {
             dueDate: hasDueDate ? dueDate : nil,
             status: status,
             notes: notes,
+            withholdingRate: withholdingRate,
             issuer: issuerProfile(),
             client: clientData(),
             items: sanitizedItems()
@@ -799,6 +806,7 @@ struct InvoiceFormView: View {
                             VStack(alignment: .trailing, spacing: 4) {
                                 Text("Base imponible: \(currency(previewData.subtotal))")
                                 Text("IVA: \(currency(previewData.taxAmount))")
+                                Text("IRPF (\(formatNumber(previewData.withholdingRate))%): -\(currency(previewData.withholdingAmount))")
                                 Text("Total: \(currency(previewData.total))")
                                     .fontWeight(.bold)
                             }
@@ -967,6 +975,7 @@ struct InvoicePreviewView: View {
     let previewData: InvoicePreviewData
     @State private var exportError = ""
     @State private var showingError = false
+    @State private var showingSendSheet = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -975,6 +984,10 @@ struct InvoicePreviewView: View {
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
+                Button("Enviar factura") {
+                    showingSendSheet = true
+                }
+                .buttonStyle(.bordered)
                 Button("Exportar PDF") {
                     do {
                         try exportPDF()
@@ -993,6 +1006,9 @@ struct InvoicePreviewView: View {
             }
         }
         .frame(width: 960, height: 760)
+        .sheet(isPresented: $showingSendSheet) {
+            InvoiceEmailSheet(previewData: previewData)
+        }
         .alert("No se pudo exportar", isPresented: $showingError) {
             Button("OK", role: .cancel) {}
         } message: {
@@ -1013,6 +1029,132 @@ struct InvoicePreviewView: View {
     }
 }
 
+private struct InvoiceEmailSheet: View {
+    let previewData: InvoicePreviewData
+
+    @Environment(\.dismiss) private var dismiss
+    @AppStorage("communication.corporateEmail") private var corporateEmail = CommunicationViewModel.defaultCorporateEmail
+    @AppStorage("communication.signature") private var corporateSignature = CommunicationViewModel.defaultSignature
+    @State private var recipient = ""
+    @State private var subject = ""
+    @State private var bodyText = ""
+    @State private var sending = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var showingAlert = false
+
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Enviar factura")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                Spacer()
+                Button("Cancelar") {
+                    dismiss()
+                }
+                .buttonStyle(.bordered)
+                Button {
+                    Task { await sendInvoice() }
+                } label: {
+                    if sending {
+                        ProgressView()
+                            .controlSize(.small)
+                    } else {
+                        Text("Enviar")
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(sending || recipient.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || subject.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+            .padding()
+
+            Form {
+                Section("Destinatario") {
+                    TextField("Correo del cliente", text: $recipient)
+                }
+
+                Section("Mensaje") {
+                    TextField("Asunto", text: $subject)
+                    TextEditor(text: $bodyText)
+                        .frame(height: 220)
+                }
+
+                Section("Adjunto") {
+                    Text("Se enviara el PDF de la factura \(previewData.number.isEmpty ? "sin numero" : previewData.number).")
+                        .foregroundColor(.secondary)
+                    if !corporateEmail.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        Text("Cuenta corporativa configurada: \(corporateEmail)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            .formStyle(.grouped)
+        }
+        .frame(width: 640, height: 560)
+        .alert(alertTitle, isPresented: $showingAlert) {
+            Button("OK", role: .cancel) {
+                if alertTitle == "Factura enviada" {
+                    dismiss()
+                }
+            }
+        } message: {
+            Text(alertMessage)
+        }
+        .onAppear {
+            if recipient.isEmpty {
+                recipient = previewData.client.email
+            }
+            if subject.isEmpty {
+                subject = "Factura \(previewData.number.isEmpty ? "adjunta" : previewData.number)"
+            }
+            if bodyText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                bodyText = defaultBody()
+            }
+        }
+    }
+
+    private func defaultBody() -> String {
+        let greetingName = previewData.client.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let greeting = greetingName.isEmpty ? "Hola," : "Hola \(greetingName),"
+        let signature = corporateSignature.trimmingCharacters(in: .whitespacesAndNewlines)
+        return [
+            greeting,
+            "",
+            "Te adjunto la factura \(previewData.number.isEmpty ? "correspondiente" : previewData.number).",
+            "",
+            signature
+        ]
+        .filter { !$0.isEmpty }
+        .joined(separator: "\n")
+    }
+
+    private func sendInvoice() async {
+        sending = true
+        defer { sending = false }
+
+        do {
+            let pdfData = try InvoicePDFExporter.export(previewData: previewData)
+            try await EmailAPIClient.send(
+                to: [recipient.trimmingCharacters(in: .whitespacesAndNewlines)],
+                subject: subject,
+                text: bodyText,
+                source: "invoice",
+                attachmentBase64: pdfData.base64EncodedString(),
+                attachmentName: "\(previewData.number.isEmpty ? "factura" : previewData.number).pdf"
+            )
+            alertTitle = "Factura enviada"
+            alertMessage = "La factura se ha enviado correctamente por correo."
+            showingAlert = true
+        } catch {
+            alertTitle = "No se pudo enviar"
+            alertMessage = error.localizedDescription
+            showingAlert = true
+        }
+    }
+}
+
 struct InvoiceIssuerSettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("invoice.issuer.name") private var name = "TALENTO SOSTENIBLE\nMarcos Daniel Alfonso"
@@ -1028,6 +1170,7 @@ struct InvoiceIssuerSettingsView: View {
     @AppStorage("invoice.issuer.bankHolder") private var bankHolder = "TALENTO SOSTENIBLE, Marcos Daniel Alfonso"
     @AppStorage("invoice.issuer.bankName") private var bankName = ""
     @AppStorage("invoice.issuer.paymentTerms") private var paymentTerms = "Transferencia bancaria"
+    @AppStorage("invoice.withholdingRate") private var withholdingRate = 15.0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -1060,6 +1203,12 @@ struct InvoiceIssuerSettingsView: View {
                     TextField("Titular de la cuenta", text: $bankHolder)
                     TextField("Entidad bancaria", text: $bankName)
                     TextField("Condiciones de pago", text: $paymentTerms)
+                }
+                Section("Fiscalidad por defecto") {
+                    TextField("IRPF %", value: $withholdingRate, format: .number)
+                    Text("Se aplicara por defecto sobre la base imponible de la factura. Para profesionales en Espana suele ser 15%.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
             }
             .formStyle(.grouped)
@@ -1244,6 +1393,7 @@ struct InvoiceDocumentView: View {
         VStack(spacing: 0) {
             totalRow(title: "Base imponible", value: currency(previewData.subtotal), emphasize: false)
             totalRow(title: "IVA (\(taxSummaryLabel()))", value: currency(previewData.taxAmount), emphasize: false)
+            totalRow(title: "IRPF (\(formatNumber(previewData.withholdingRate))%)", value: "-\(currency(previewData.withholdingAmount))", emphasize: false)
             totalRow(title: "TOTAL FACTURA", value: currency(previewData.total), emphasize: true)
         }
         .background(
@@ -1482,6 +1632,7 @@ extension InvoicePreviewData {
             dueDate: invoice.dueDate,
             status: invoice.status ?? "draft",
             notes: invoice.notes ?? "",
+            withholdingRate: defaultInvoiceWithholdingRate(),
             issuer: issuer,
             client: .init(
                 name: clientName,
@@ -1548,6 +1699,16 @@ private func issuerProfile() -> InvoiceIssuerProfile {
         bankName: defaults.string(forKey: "invoice.issuer.bankName") ?? "",
         paymentTerms: defaults.string(forKey: "invoice.issuer.paymentTerms") ?? "Transferencia bancaria"
     )
+}
+
+private func defaultInvoiceWithholdingRate() -> Double {
+    let defaults = UserDefaults.standard
+    let configuredRate = defaults.object(forKey: "invoice.withholdingRate") as? Double
+    return configuredRate ?? 15.0
+}
+
+private func formatNumber(_ value: Double) -> String {
+    number(value)
 }
 
 private func currency(_ value: Double) -> String {

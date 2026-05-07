@@ -3,7 +3,8 @@ import SwiftUI
 @MainActor
 final class CommunicationViewModel: ObservableObject {
     static let defaultCorporateEmail = "alfonsomarcos@talentosostenibleconsulting.es"
-    static let defaultSignature = "Marcos Daniel Alfonso\nwww.talentosostenibleconsulting.es\n637754638"
+    static let defaultSignature = "Marcos Daniel Alfonso\nConsultant HR Tech"
+    static let defaultEmailAPIBaseURL = ""
 
     @Published var accounts: [MailAccountOption] = []
     @Published var selectedAccount: MailAccountOption?
@@ -121,6 +122,8 @@ struct CommunicationCenterView: View {
     @AppStorage("communication.corporateAccountID") private var corporateAccountID = ""
     @AppStorage("communication.corporateEmail") private var corporateEmail = CommunicationViewModel.defaultCorporateEmail
     @AppStorage("communication.signature") private var corporateSignature = CommunicationViewModel.defaultSignature
+    @AppStorage(EmailAPIClient.baseURLDefaultsKey) private var emailAPIBaseURL = CommunicationViewModel.defaultEmailAPIBaseURL
+    @AppStorage(EmailAPIClient.apiSecretDefaultsKey) private var emailAPISecret = ""
     @State private var searchText = ""
     @State private var unreadOnly = false
     @State private var showingSettings = false
@@ -177,6 +180,10 @@ struct CommunicationCenterView: View {
             return .orange
         }
         return .red
+    }
+
+    private var directSendingConfigured: Bool {
+        !emailAPISecret.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     var body: some View {
@@ -252,6 +259,17 @@ struct CommunicationCenterView: View {
                     communicationStatCard(title: "Cuenta activa", value: viewModel.selectedAccount?.address.isEmpty == false ? viewModel.selectedAccount?.address ?? "-" : viewModel.selectedAccount?.name ?? "-", accent: .blue)
                     communicationStatCard(title: "Correos", value: "\(viewModel.messages.count)", accent: .green)
                     communicationStatCard(title: "No leidos", value: "\(viewModel.unreadCount)", accent: .orange)
+                }
+                .padding(.horizontal)
+
+                HStack(spacing: 10) {
+                    Circle()
+                        .fill(directSendingConfigured ? Color.green : Color.orange)
+                        .frame(width: 10, height: 10)
+                    Text(directSendingConfigured ? "Envio directo desde la app operativo" : "Falta configurar el servicio de envio directo para facturas y correos desde la app")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Spacer()
                 }
                 .padding(.horizontal)
 
@@ -411,6 +429,8 @@ struct CommunicationCenterView: View {
             CommunicationSettingsView(
                 corporateEmail: $corporateEmail,
                 corporateSignature: $corporateSignature,
+                emailAPIBaseURL: $emailAPIBaseURL,
+                emailAPISecret: $emailAPISecret,
                 selectedAccount: viewModel.selectedAccount,
                 detectedAccount: corporateAccountInMail,
                 activateDetectedAccount: {
@@ -480,6 +500,8 @@ struct CommunicationCenterView: View {
 private struct CommunicationSettingsView: View {
     @Binding var corporateEmail: String
     @Binding var corporateSignature: String
+    @Binding var emailAPIBaseURL: String
+    @Binding var emailAPISecret: String
     let selectedAccount: MailAccountOption?
     let detectedAccount: MailAccountOption?
     let activateDetectedAccount: () -> Void
@@ -532,6 +554,14 @@ private struct CommunicationSettingsView: View {
                 Section("Firma corporativa") {
                     TextEditor(text: $corporateSignature)
                         .frame(height: 140)
+                }
+
+                Section("Envio desde la app") {
+                    TextField("URL del servicio de correo", text: $emailAPIBaseURL, prompt: Text("https://tu-dominio.com o http://localhost:3000"))
+                    SecureField("API secret", text: $emailAPISecret)
+                    Text("Esta configuracion permite enviar correos y facturas sin salir de la app. Si la dejas vacia, Comunicacion seguira redactando a traves de Mail.app.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
             }
             .formStyle(.grouped)

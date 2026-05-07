@@ -23,6 +23,7 @@ enum MailAppClient {
     static func fetchAccounts() throws -> [MailAccountOption] {
         let output = try run(script: """
         tell application \"Mail\"
+            launch
             set fieldSep to ASCII character 31
             set recordSep to ASCII character 30
             set outputText to \"\"
@@ -49,6 +50,7 @@ enum MailAppClient {
         let output = try run(script: """
         set maxCount to \(limit)
         tell application \"Mail\"
+            launch
             set fieldSep to ASCII character 31
             set recordSep to ASCII character 30
             set outputText to \"\"
@@ -81,6 +83,7 @@ enum MailAppClient {
         let escapedName = escape(accountName)
         return try run(script: """
         tell application \"Mail\"
+            launch
             set targetAccount to first account whose name is \"\(escapedName)\"
             set targetMessage to first message of inbox of targetAccount whose id is \(messageID)
             return content of targetMessage as string
@@ -92,6 +95,7 @@ enum MailAppClient {
         let escapedName = escape(accountName)
         _ = try run(script: """
         tell application \"Mail\"
+            launch
             set targetAccount to first account whose name is \"\(escapedName)\"
             set targetMessage to first message of inbox of targetAccount whose id is \(messageID)
             activate
@@ -107,6 +111,7 @@ enum MailAppClient {
         let escapedBody = escape(body)
         _ = try run(script: """
         tell application \"Mail\"
+            launch
             set targetAccount to first account whose name is \"\(escapedName)\"
             set senderAddress to \"\"
             if (count of (email addresses of targetAccount)) > 0 then
