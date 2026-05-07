@@ -41,6 +41,42 @@ O compilar por linea de comandos:
 xcodebuild -project TalentoSostenible.xcodeproj -scheme TalentoSostenible -configuration Debug -sdk macosx CODE_SIGNING_ALLOWED=NO build
 ```
 
+## Uso rapido
+
+### Primer arranque
+
+1. Abre [TalentoSostenible.xcodeproj](TalentoSostenible.xcodeproj) en Xcode.
+2. Ejecuta la app sobre tu Mac.
+3. Concede permisos de calendario y notificaciones cuando macOS los solicite.
+4. Si vas a usar Comunicacion, deja antes operativa la cuenta corporativa en Mail.app.
+
+### Flujo recomendado de demostracion
+
+1. Revisa el Dashboard para ver accesos rapidos y metricas base.
+2. En CRM, crea o revisa contactos, empresas, leads y oportunidades.
+3. En Agenda, valida calendario, tareas y recordatorios.
+4. En Finanzas, completa datos fiscales y de cobro antes de generar una factura.
+5. En Comunicacion, selecciona la cuenta corporativa y prueba redaccion o respuesta desde Mail.app.
+6. En Portal del cliente, revisa el circuito de tickets.
+
+### Configuracion minima para facturacion
+
+Antes de exportar facturas, conviene completar desde la app:
+
+- Datos fiscales del emisor
+- IBAN
+- Titular de cuenta
+- Entidad bancaria
+- Condiciones de pago
+
+### Configuracion minima para comunicacion
+
+Antes de usar la bandeja corporativa, conviene verificar:
+
+- Cuenta corporativa anadida en Mail.app
+- Correo corporativo configurado en la app
+- Firma corporativa revisada en la configuracion interna
+
 ## Estructura principal
 
 - [TalentoSostenible/ContentView.swift](TalentoSostenible/ContentView.swift): navegacion principal y sidebar jerarquico.
@@ -88,6 +124,18 @@ xcodebuild -project TalentoSostenible.xcodeproj -scheme TalentoSostenible -confi
 - FaceTime y llamadas mediante URLs del sistema
 - Calendario mediante EventKit
 - Notificaciones locales de seguimiento
+
+## Capturas
+
+Las capturas del producto todavia no estan versionadas dentro del repositorio. La documentacion ya queda preparada para anadirlas en una siguiente iteracion, idealmente con este bloque:
+
+- Dashboard ejecutivo
+- Centro de Finanzas con facturacion
+- Comunicacion con Mail corporativo
+- CRM con pipeline y oportunidades
+- Agenda con calendario y tareas
+
+Cuando existan imagenes reales del producto, conviene guardarlas en una carpeta dedicada dentro del repositorio y enlazarlas desde esta seccion.
 
 ## Limitaciones actuales del prototipo
 
