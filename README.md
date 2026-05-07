@@ -152,6 +152,10 @@ La app ha sido validada recientemente con compilacion local correcta usando:
 xcodebuild -project TalentoSostenible.xcodeproj -scheme TalentoSostenible -configuration Debug -sdk macosx CODE_SIGNING_ALLOWED=NO build
 ```
 
+## Roadmap
+
+El plan de siguientes iteraciones del prototipo esta documentado en [ROADMAP.md](ROADMAP.md).
+
 ## Proximo paso recomendado
 
 Como siguiente iteracion, conviene completar una de estas lineas:
