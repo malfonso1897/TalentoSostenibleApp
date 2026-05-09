@@ -25,10 +25,14 @@ targets:
         ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: YES
         INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.business"
         INFOPLIST_KEY_CFBundleDisplayName: "Talento Sostenible"
+        INFOPLIST_KEY_NSAppleEventsUsageDescription: "Talento Sostenible necesita acceso a Mail para leer y responder correos corporativos desde la app."
         INFOPLIST_KEY_NSCalendarsUsageDescription: "Talento Sostenible necesita acceso al calendario para mostrar y crear eventos."
         INFOPLIST_KEY_NSRemindersUsageDescription: "Talento Sostenible necesita acceso a recordatorios para seguimiento de tareas."
     entitlements:
       path: TalentoSostenible/TalentoSostenible.entitlements
       properties:
         com.apple.security.app-sandbox: true
+        com.apple.security.automation.apple-events: true
+        com.apple.security.files.user-selected.read-write: true
+        com.apple.security.network.client: true
         com.apple.security.personal-information.calendars: true

@@ -23,6 +23,7 @@ enum MailAppClient {
     static func fetchAccounts() throws -> [MailAccountOption] {
         let output = try run(script: """
         tell application \"Mail\"
+            launch
             set fieldSep to ASCII character 31
             set recordSep to ASCII character 30
             set outputText to \"\"
@@ -49,6 +50,7 @@ enum MailAppClient {
         let output = try run(script: """
         set maxCount to \(limit)
         tell application \"Mail\"
+            launch
             set fieldSep to ASCII character 31
             set recordSep to ASCII character 30
             set outputText to \"\"
@@ -81,6 +83,7 @@ enum MailAppClient {
         let escapedName = escape(accountName)
         return try run(script: """
         tell application \"Mail\"
+            launch
             set targetAccount to first account whose name is \"\(escapedName)\"
             set targetMessage to first message of inbox of targetAccount whose id is \(messageID)
             return content of targetMessage as string
@@ -92,6 +95,7 @@ enum MailAppClient {
         let escapedName = escape(accountName)
         _ = try run(script: """
         tell application \"Mail\"
+            launch
             set targetAccount to first account whose name is \"\(escapedName)\"
             set targetMessage to first message of inbox of targetAccount whose id is \(messageID)
             activate
@@ -107,6 +111,7 @@ enum MailAppClient {
         let escapedBody = escape(body)
         _ = try run(script: """
         tell application \"Mail\"
+            launch
             set targetAccount to first account whose name is \"\(escapedName)\"
             set senderAddress to \"\"
             if (count of (email addresses of targetAccount)) > 0 then
@@ -120,6 +125,38 @@ enum MailAppClient {
                 if \"\(escapedTo)\" is not \"\" then
                     make new to recipient at end of to recipients with properties {address:\"\(escapedTo)\"}
                 end if
+            end tell
+            activate
+        end tell
+        """)
+    }
+
+    static func compose(accountName: String, to: String, subject: String, body: String, attachmentPath: String) throws {
+        let escapedName = escape(accountName)
+        let escapedTo = escape(to)
+        let escapedSubject = escape(subject)
+        let escapedBody = escape(body)
+        let escapedAttachmentPath = escape(attachmentPath)
+        _ = try run(script: """
+        set attachmentAlias to POSIX file "\(escapedAttachmentPath)" as alias
+        tell application \"Mail\"
+            launch
+            set targetAccount to first account whose name is \"\(escapedName)\"
+            set senderAddress to \"\"
+            if (count of (email addresses of targetAccount)) > 0 then
+                set senderAddress to item 1 of (email addresses of targetAccount) as string
+            end if
+            set newMessage to make new outgoing message with properties {visible:true, subject:\"\(escapedSubject)\", content:\"\(escapedBody)\"}
+            tell newMessage
+                if senderAddress is not \"\" then
+                    set sender to senderAddress
+                end if
+                if \"\(escapedTo)\" is not \"\" then
+                    make new to recipient at end of to recipients with properties {address:\"\(escapedTo)\"}
+                end if
+                tell content
+                    make new attachment with properties {file name:attachmentAlias} at after the last paragraph
+                end tell
             end tell
             activate
         end tell

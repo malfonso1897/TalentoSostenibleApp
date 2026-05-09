@@ -2,13 +2,18 @@ import Foundation
 
 /// Llama al Marketing Hub (`npm run dev`) o a tu dominio en producción: `POST /api/email/send`
 enum EmailAPIClient {
+    static let baseURLDefaultsKey = "communication.apiBaseURL"
+    static let apiSecretDefaultsKey = "communication.apiSecret"
+
     static var baseURL: String {
-        let v = ProcessInfo.processInfo.environment["MARKETING_HUB_URL"] ?? "http://localhost:3000"
+        let configuredValue = UserDefaults.standard.string(forKey: baseURLDefaultsKey)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let v = (configuredValue?.isEmpty == false ? configuredValue : nil) ?? ProcessInfo.processInfo.environment["MARKETING_HUB_URL"] ?? "http://localhost:3000"
         return v.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
     }
 
     static var apiSecret: String {
-        ProcessInfo.processInfo.environment["EMAIL_API_SECRET"] ?? ""
+        let configuredValue = UserDefaults.standard.string(forKey: apiSecretDefaultsKey)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return (configuredValue?.isEmpty == false ? configuredValue : nil) ?? ProcessInfo.processInfo.environment["EMAIL_API_SECRET"] ?? ""
     }
 
     static func send(
@@ -23,7 +28,7 @@ enum EmailAPIClient {
             throw NSError(
                 domain: "EmailAPI",
                 code: 1,
-                userInfo: [NSLocalizedDescriptionKey: "Configura en Xcode → Scheme → Run → Arguments → Environment Variables: MARKETING_HUB_URL (ej. http://localhost:3000) y EMAIL_API_SECRET (mismo valor que en .env.local del hub)."]
+                userInfo: [NSLocalizedDescriptionKey: "Configura el servicio de envio en Comunicacion → Configuracion con la URL del hub y el API secret. En desarrollo tambien puedes usar MARKETING_HUB_URL y EMAIL_API_SECRET en Xcode."]
             )
         }
         guard let url = URL(string: baseURL + "/api/email/send") else {

@@ -14,7 +14,6 @@ struct CorporateEmailView: View {
         Form {
             Section {
                 TextField("Para (correos separados por coma)", text: $toField)
-                    .textContentType(.emailAddress)
                 TextField("Asunto", text: $subject)
             } header: {
                 Text("Destino")
